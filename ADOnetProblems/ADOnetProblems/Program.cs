@@ -15,7 +15,7 @@ namespace EmployeePayrollSQL
             EmployeeRepo repo = new EmployeeRepo();
             try
             {
-                Console.WriteLine("Choose option or press 0 for exit\n1:Retrieve Data\n2:Add Data\n3:Update Basic_Salary");
+                Console.WriteLine("Choose option or press 0 for exit\n1:Retrieve Data\n2:Add Data\n3:Update Basic_Salary\n4:Delete Data");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -54,6 +54,15 @@ namespace EmployeePayrollSQL
                         repo.UpdateEmployee(model1);
                         repo.GetAllEmployees();
                         break;
+                    case 4:
+                        EmployeeModel model2 = new EmployeeModel();
+                        Console.WriteLine("Enter id of employee whose data you want to delete");
+                        model2.Id = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter name");
+                        model2.Name = Console.ReadLine();
+                        repo.DeleteEmployee(model2);
+                        repo.GetAllEmployees();
+                        break;
                 }
                 Console.ReadLine();
             }
@@ -65,35 +74,35 @@ namespace EmployeePayrollSQL
     }
 }
 
-//UC_3
+
+//UC_4
 /* 
+Welcome
+Choose option or press 0 for exit
+1:Retrieve Data
+2:Add Data
 3:Update Basic_Salary
-3
-Enter id of employee whose data you want to update
-8
+4:Delete Data
+4
+Enter id of employee whose data you want to delete
+7
 Enter name
 Pant
-Enter new BasicPay
-67856
-Employee details updated successfully
+Employee details deleted successfully
 1, Dhoni, 70000, 03-02-2007 00:00:00, M, 1234567890, Bangalore, , 0, 0, 0, 70000
 
-2, Virat, 50000, 04 - 05 - 2010 00:00:00, M, 1234569874, Bangalore, , 0, 0, 0, 50000
+2, Virat, 50000, 04-05-2010 00:00:00, M, 1234569874, Bangalore, , 0, 0, 0, 50000
 
-3, Rohit, 60000, 09 - 06 - 2009 00:00:00, M, 1234567890, Bangalore, , 0, 0, 0, 60000
+3, Rohit, 60000, 09-06-2009 00:00:00, M, 1234567890, Bangalore, , 0, 0, 0, 60000
 
-4, Smrithi, 40000, 05 - 03 - 2018 00:00:00, F, 1234569874, Bangalore, , 0, 0, 0, 40000
+4, Smrithi, 40000, 05-03-2018 00:00:00, F, 1234569874, Bangalore, , 0, 0, 0, 40000
 
-5, Mithai, 50000, 02 - 08 - 2020 00:00:00, F, 1234567890, Bangalore, , 0, 0, 0, 50000
+5, Mithai, 50000, 02-08-2020 00:00:00, F, 1234567890, Bangalore, , 0, 0, 0, 50000
 
-6, Virat, 60000, 05 - 05 - 2011 00:00:00, M, 7894561230, Bangalore, RCB, 1000, 59000, 2000, -2000
+6, Virat, 60000, 05-05-2011 00:00:00, M, 7894561230, Bangalore, RCB, 1000, 59000, 2000, -2000
 
-7, Pant, 30000, 20 - 07 - 2022 00:00:00, M, 912423, Delhi, DC, 1000, 29000, 1000, 28000
+8, Pant, 67856, 20-07-2022 00:00:00, M, 912423, Delhi, DC, 1000, 29000, 1000, 28000
 
-8, Pant, 67856, 20 - 07 - 2022 00:00:00, M, 912423, Delhi, DC, 1000, 29000, 1000, 28000
-
-9, Pant, 56879, 21 - 07 - 2022 00:00:00, M, 912423, Delhi, DC, 1000, 29000, 1000, 28000
-
-10, Pant, 78943, 21 - 07 - 2022 00:00:00, M, 912423, Delhi, DC, 1000, 29000, 1000, 28000
+9, Pant, 56879, 21-07-2022 00:00:00, M, 912423, Delhi, DC, 1000, 29000, 1000, 28000
 
 */

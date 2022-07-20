@@ -62,6 +62,7 @@ values('Virat', 50000.00, '2011-05-05', 'M', 7894561230, 'Bangalore', 'RCB',1000
 update employee_payroll set Net_Pay = (Basic_Pay-Deductions-Taxable_Pay-Income_Tax);
 
 --Stored procedure--
+--UC_2
 create procedure spAddEmployees
 @Name varchar(100),
 @Startdate Date,
@@ -79,6 +80,7 @@ insert into employee_payroll (Name, Startdate, Gender, Phone, Address, Departmen
 	values(@Name, @Startdate, @Gender, @Phone, @Address, @Department, @Basic_Pay, @Deductions, @Taxable_pay, @Income_tax, @Net_pay);
 
 --Update basicPay
+--UC_3
 create procedure spUpdateEmployee
 @Name varchar(100),
 @Id int,
@@ -87,3 +89,13 @@ as
 update employee_payroll set Basic_pay = @Basic_Pay where Id=@Id and Name= @Name;
 
 exec spUpdateEmployee 'Pant' , 10 ,78943;
+
+--delete employee
+--UC_4
+create procedure spDeleteEmployee
+@Name varchar(100),
+@Id int
+as
+delete from employee_payroll where Id=@Id and Name = @Name;
+
+exec spDeleteEmployee 'Pant',10 ;
