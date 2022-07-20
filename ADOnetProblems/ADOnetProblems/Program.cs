@@ -15,7 +15,8 @@ namespace EmployeePayrollSQL
             EmployeeRepo repo = new EmployeeRepo();
             try
             {
-                Console.WriteLine("Choose option or press 0 for exit\n1:Retrieve Data\n2:Add Data\n3:Update Basic_Salary\n4:Delete Data");
+                Console.WriteLine("Choose option or press 0 for exit\n1:Retrieve Data\n2:Add Data\n3:Update Basic_Salary\n4:Delete Data" +
+                                   "\n5:Retrive employee with date Range");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -63,6 +64,10 @@ namespace EmployeePayrollSQL
                         repo.DeleteEmployee(model2);
                         repo.GetAllEmployees();
                         break;
+                    case 5:
+                        string query = "select * from employee_payroll where StartDate between cast ('2018-01-01' as date) and GETDATE()";
+                        repo.GetEmployeesWithDataAdapter(query);
+                        break;
                 }
                 Console.ReadLine();
             }
@@ -75,7 +80,9 @@ namespace EmployeePayrollSQL
 }
 
 
-//UC_4
+//UC_5
+//method to retrive employee based on date Range
+
 /* 
 Welcome
 Choose option or press 0 for exit
@@ -83,26 +90,11 @@ Choose option or press 0 for exit
 2:Add Data
 3:Update Basic_Salary
 4:Delete Data
-4
-Enter id of employee whose data you want to delete
-7
-Enter name
-Pant
-Employee details deleted successfully
-1, Dhoni, 70000, 03-02-2007 00:00:00, M, 1234567890, Bangalore, , 0, 0, 0, 70000
-
-2, Virat, 50000, 04-05-2010 00:00:00, M, 1234569874, Bangalore, , 0, 0, 0, 50000
-
-3, Rohit, 60000, 09-06-2009 00:00:00, M, 1234567890, Bangalore, , 0, 0, 0, 60000
-
-4, Smrithi, 40000, 05-03-2018 00:00:00, F, 1234569874, Bangalore, , 0, 0, 0, 40000
-
-5, Mithai, 50000, 02-08-2020 00:00:00, F, 1234567890, Bangalore, , 0, 0, 0, 50000
-
-6, Virat, 60000, 05-05-2011 00:00:00, M, 7894561230, Bangalore, RCB, 1000, 59000, 2000, -2000
-
-8, Pant, 67856, 20-07-2022 00:00:00, M, 912423, Delhi, DC, 1000, 29000, 1000, 28000
-
-9, Pant, 56879, 21-07-2022 00:00:00, M, 912423, Delhi, DC, 1000, 29000, 1000, 28000
+5:Retrive employee with date Range
+5
+4, Smrithi, 05-03-2018 00:00:00, F, 1234569874, Bangalore, , 40000, 0, 0, 0, 40000
+5, Mithai, 02-08-2020 00:00:00, F, 1234567890, Bangalore, , 50000, 0, 0, 0, 50000
+8, Pant, 20-07-2022 00:00:00, M, 912423, Delhi, DC, 67856, 1000, 29000, 1000, 28000
+9, Pant, 21-07-2022 00:00:00, M, 912423, Delhi, DC, 56879, 1000, 29000, 1000, 28000
 
 */
