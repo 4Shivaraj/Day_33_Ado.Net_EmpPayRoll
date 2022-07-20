@@ -16,7 +16,7 @@ namespace EmployeePayrollSQL
             try
             {
                 Console.WriteLine("Choose option or press 0 for exit\n1:Retrieve Data\n2:Add Data\n3:Update Basic_Salary\n4:Delete Data" +
-                    "\n5:Retrive employee with date Range\n6:Find Sum Avg Max Min Count group by gender");
+                    "\n5:Retrive employee with date Range\n6:Find Sum Avg Max Min Count group by gender\n7:Insert into two table");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -85,6 +85,11 @@ namespace EmployeePayrollSQL
                         Console.WriteLine("Count");
                         repo.GetCount(countquery);
                         break;
+                    case 7:
+                        EmployeeModel model3 = new EmployeeModel() { Name = "AAA", Gender = 'M', Address = "Bnglr" };
+                        repo.InsertIntoTwoTables(model3);
+                        repo.GetAllEmployees();
+                        break;
                 }
                 Console.ReadLine();
             }
@@ -97,8 +102,8 @@ namespace EmployeePayrollSQL
 }
 
 
-//UC_5
-//method to retrive employee based on date Range
+//UC_7
+//Method to add into two tables
 
 /* 
 Welcome
@@ -108,10 +113,24 @@ Choose option or press 0 for exit
 3:Update Basic_Salary
 4:Delete Data
 5:Retrive employee with date Range
-5
-4, Smrithi, 05-03-2018 00:00:00, F, 1234569874, Bangalore, , 40000, 0, 0, 0, 40000
-5, Mithai, 02-08-2020 00:00:00, F, 1234567890, Bangalore, , 50000, 0, 0, 0, 50000
-8, Pant, 20-07-2022 00:00:00, M, 912423, Delhi, DC, 67856, 1000, 29000, 1000, 28000
-9, Pant, 21-07-2022 00:00:00, M, 912423, Delhi, DC, 56879, 1000, 29000, 1000, 28000
+6:Find Sum Avg Max Min Count group by gender
+7:Insert into two table
+7
+Inserted into salary table successfully
+1, Dhoni, 70000, 03-02-2007 00:00:00, M, 1234567890, Bangalore, , 0, 0, 0, 70000
+
+2, Virat, 50000, 04-05-2010 00:00:00, M, 1234569874, Bangalore, , 0, 0, 0, 50000
+
+3, Rohit, 60000, 09-06-2009 00:00:00, M, 1234567890, Bangalore, , 0, 0, 0, 60000
+
+4, Smrithi, 40000, 05-03-2018 00:00:00, F, 1234569874, Bangalore, , 0, 0, 0, 40000
+
+5, Mithai, 50000, 02-08-2020 00:00:00, F, 1234567890, Bangalore, , 0, 0, 0, 50000
+
+6, Virat, 60000, 05-05-2011 00:00:00, M, 7894561230, Bangalore, RCB, 1000, 59000, 2000, -2000
+
+8, Pant, 67856, 20-07-2022 00:00:00, M, 912423, Delhi, DC, 1000, 29000, 1000, 28000
+
+9, Pant, 56879, 21-07-2022 00:00:00, M, 912423, Delhi, DC, 1000, 29000, 1000, 28000
 
 */
