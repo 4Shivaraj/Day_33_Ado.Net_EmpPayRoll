@@ -47,7 +47,7 @@ alter table employee_payroll add Address varchar(100) not null default 'Bangalor
 alter table employee_payroll add Department varchar(250) default 'IT';
 
 --UC9-- Extend table to have Basic Pay, Deductions, Taxable Pay, Income Tax, Net Pay.
-exec sp_rename 'employee_payroll.salary','Basic_pay','column';
+exec sp_rename 'employee_payroll.salary','Basic_pay','column';  --Existing Store Procedure in sql server 
 alter table employee_payroll add 
 Deductions float not null default 0.00,
 Taxable_Pay float not null default 0.00, 
@@ -77,3 +77,13 @@ create procedure spAddEmployees
 as
 insert into employee_payroll (Name, Startdate, Gender, Phone, Address, Department, Basic_Pay, Deductions, Taxable_pay, Income_tax, Net_pay)
 	values(@Name, @Startdate, @Gender, @Phone, @Address, @Department, @Basic_Pay, @Deductions, @Taxable_pay, @Income_tax, @Net_pay);
+
+--Update basicPay
+create procedure spUpdateEmployee
+@Name varchar(100),
+@Id int,
+@Basic_Pay float
+as
+update employee_payroll set Basic_pay = @Basic_Pay where Id=@Id and Name= @Name;
+
+exec spUpdateEmployee 'Pant' , 10 ,78943;
